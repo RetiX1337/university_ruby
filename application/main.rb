@@ -21,3 +21,4 @@ puts parrots[0].parrot_flyweight == parrots[1].parrot_flyweight
 puts parrots[2].parrot_flyweight == parrots[0].parrot_flyweight
 puts parrots[3].parrot_flyweight == parrots[4].parrot_flyweight
 puts parrots[5].parrot_flyweight == parrots[3].parrot_flyweight
+
