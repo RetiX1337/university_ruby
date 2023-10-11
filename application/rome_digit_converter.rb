@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class RomanConverter
-  ROMAN_NUMERAL_MAP = {
+  ROMAN_MAP = {
     1000 => 'M',
     900 => 'CM',
     500 => 'D',
@@ -19,21 +19,22 @@ class RomanConverter
 
   def self.to_roman(number)
     result = ""
-    ROMAN_NUMERAL_MAP.keys.each do |decimal_key|
+    ROMAN_MAP.keys.each do |decimal_key|
       while number >= decimal_key
         number -= decimal_key
-        result += ROMAN_NUMERAL_MAP[decimal_key]
+        result += ROMAN_MAP[decimal_key]
       end
     end
     result
   end
 
+
   def self.to_decimal(roman)
     result = 0
-    ROMAN_NUMERAL_MAP.values.each do |roman_digit|
+    ROMAN_MAP.values.each do |roman_digit|
       while roman.start_with?(roman_digit)
         roman = roman.slice(roman_digit.length, roman.length)
-        result += ROMAN_NUMERAL_MAP.key(roman_digit)
+        result += ROMAN_MAP.key(roman_digit)
       end
     end
     result
