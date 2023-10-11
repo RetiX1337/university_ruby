@@ -42,4 +42,4 @@ class RomanConverter
 end
 
 puts RomanConverter.to_roman(1666) # Expected output: MDCLXVI
-puts RomanConverter.to_decimal('MDCLXVI') # Outputs: 1666
+puts RomanConverter.to_decimal('MDCLXVI') # Expected output: 1666
