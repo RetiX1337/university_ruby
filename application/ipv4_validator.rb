@@ -11,6 +11,11 @@ class Ipv4Validator
   end
   def self.is_ipv4_imperative?(ipv4)
     octets = ipv4.split('.')
+
+    if octets.length != 4
+      return false
+    end
+
     octets.all? do |octet|
       num = octet.to_i
       num.to_s == octet && num.between?(0, 255)
