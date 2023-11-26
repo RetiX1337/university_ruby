@@ -9,7 +9,7 @@ This is the constructor of the MNDoc class. It takes two parameters:
 * &block: A block of code that is evaluated within the context of the instance.
 
 
-Usage example:
+Usage example: 
 ```
 MNDoc.new do
 header('MNDoc Class Documentation', 1)
@@ -22,7 +22,7 @@ Adds a header to the documentation. It takes two parameters:
 * size: The size of the header. It should be a number between 1 and 6.
 
 
-Usage example:
+Usage example: 
 ```
 header('This will generate a header of size 3', 3)
 ```
@@ -32,7 +32,7 @@ Adds a paragraph to the documentation. It takes one parameter:
 * text: The text of the paragraph.
 
 
-Usage example:
+Usage example: 
 ```
 paragraph('This will generate a paragraph')
 ```
@@ -42,14 +42,14 @@ Adds a code block to the documentation. It takes one parameter:
 * text: The text of the code block.
 
 
-Example:
+Example: 
 ```
 mn_doc = MNDoc.new do
 header('MNDoc Class Documentation', 1)
 end
 ```
 
-Usage example:
+Usage example: 
 ```
 code('this will generate code block')
 ```
@@ -59,13 +59,13 @@ Adds an unordered list to the documentation. It takes one parameter:
 * items: An array of items to be included in the list.
 
 
-Example:
+Example: 
 * item1
 * item2
 * item3
 
 
-Usage example:
+Usage example: 
 ```
 u_list(%w[item1 item2 item3])
 ```
@@ -75,13 +75,13 @@ Adds an ordered list to the documentation. It takes one parameter:
 * items: An array of items to be included in the list.
 
 
-Example:
+Example: 
 1. item1
 2. item2
 3. item3
 
 
-Usage example:
+Usage example: 
 ```
 o_list(%w[item1 item2 item3])
 ```
@@ -93,7 +93,7 @@ Makes a text bold in the documentation. It takes one parameter:
 
 Example: **this text will be bold**
 
-It has to be used inlined like this:
+It has to be used inlined like this: 
 ```
 paragraph("Example: #{bold("this text will be bold")}
 ```
@@ -105,7 +105,7 @@ Makes a text italic in the documentation. It takes one parameter:
 
 Example: *this text will be italic*
 
-It has to be used inlined like this:
+It has to be used inlined like this: 
 ```
 paragraph("Example: #{italic("this text will be italic")}
 ```
@@ -115,10 +115,10 @@ Adds a quote to the documentation. It takes one parameter:
 * text: The text of the quote.
 
 
-Example:
+Example: 
 >Example of the quote
 
-Usage example:
+Usage example: 
 ```
 quote('This will generate a quote')
 ```
@@ -129,10 +129,10 @@ Adds a hyperlink to the documentation. It takes two parameters:
 * cover_text: The text that will be displayed as the hyperlink.
 
 
-Example:
+Example: 
 [Link to YouTube](https://www.youtube.com)
 
-Usage example:
+Usage example: 
 ```
 link("https://www.youtube.com", "Link to YouTube")
 ```
@@ -144,12 +144,12 @@ Adds an image to the documentation. It takes three parameters:
 * explain text: The text to be displayed once cursor is pointing at the picture
 
 
-Example:
+Example: 
 
 
 ![Goofy ahh cat](https://i.imgflip.com/2/7ssjd0.jpg 'He is planning something mischievous')
 
-Usage example:
+Usage example: 
 ```
 image("https://i.imgflip.com/2/7ssjd0.jpg",
         "Goofy ahh cat", "He is planning something mischievous")
@@ -161,14 +161,14 @@ Adds a table to the documentation. It takes two parameters:
 * *rows: Unlimited amount of rows as arrays.
 
 
-Example:
+Example: 
 
 Header1 | Header2
 --- | ---
 Row1Col1 | Row1Col2
 Row2Col1 | Row2Col2
 
-Usage example:
+Usage example: 
 ```
 table(%w[Header1 Header2], %w[Row1Col1 Row1Col2], %w[Row2Col1 Row2Col2])
 ```
