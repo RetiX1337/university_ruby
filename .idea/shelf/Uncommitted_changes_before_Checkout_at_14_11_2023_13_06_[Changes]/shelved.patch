@@ -1,0 +1,19 @@
+Index: application/merkle_tree.rb
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># frozen_string_literal: true\r\nrequire 'digest'\r\n\r\nclass MerkleTree\r\n  attr_reader :root\r\n\r\n  def initialize(data)\r\n    @root = build(data)\r\n  end\r\n\r\n  private def build(data)\r\n    return if data.empty?\r\n\r\n    if data.size == 1\r\n      return Node.new(hash_element(data.first))\r\n    end\r\n\r\n    mid = data.size / 2\r\n    left = build(data[0...mid])\r\n    right = build(data[mid...data.size])\r\n\r\n    Node.new(hash_element(left.hash + right.hash), left, right)\r\n  end\r\n\r\n  private def hash_element(data)\r\n    Digest::SHA2.new(256).hexdigest(data)\r\n  end\r\n\r\n  def contains?(data)\r\n    contains_recursive?(@root, hash_element(data))\r\n  end\r\n\r\n  private\r\n\r\n  def contains_recursive?(node, hash)\r\n    return false if node.nil?\r\n    return true if node.hash == hash\r\n\r\n    contains_recursive?(node.left, hash) || contains_recursive?(node.right, hash)\r\n  end\r\n\r\n  class Node\r\n    attr_reader :left, :right, :hash\r\n\r\n    def initialize(hash, left = nil, right = nil)\r\n      @hash = hash\r\n      @left = left\r\n      @right = right\r\n    end\r\n\r\n  end\r\nend\r\n
+===================================================================
+diff --git a/application/merkle_tree.rb b/application/merkle_tree.rb
+--- a/application/merkle_tree.rb	
++++ b/application/merkle_tree.rb	
+@@ -30,9 +30,7 @@
+     contains_recursive?(@root, hash_element(data))
+   end
+ 
+-  private
+-
+-  def contains_recursive?(node, hash)
++  private def contains_recursive?(node, hash)
+     return false if node.nil?
+     return true if node.hash == hash
+ 
